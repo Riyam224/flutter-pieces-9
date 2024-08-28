@@ -85,7 +85,7 @@ class _HomeViewState extends State<HomeView> {
           SmoothPageIndicator(
             controller: pageController,
             count: 3,
-            effect: const WormEffect(
+            effect: const ExpandingDotsEffect(
               dotHeight: 20,
               dotWidth: 20,
               dotColor: Colors.grey,
