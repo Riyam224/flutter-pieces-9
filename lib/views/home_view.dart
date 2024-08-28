@@ -48,33 +48,36 @@ class _HomeViewState extends State<HomeView> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 100),
             child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  shape: const RoundedRectangleBorder(),
-                  backgroundColor: Colors.blue,
-                  minimumSize: const Size(200, 60),
-                ),
-                onPressed: () {
-                  // todo move to next page
-                  jumpToPage(currentPage + 1);
-                },
-                child: const Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Next',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                    Icon(
-                      Icons.chevron_right,
-                      size: 30,
+              style: ElevatedButton.styleFrom(
+                shape: const RoundedRectangleBorder(),
+                backgroundColor: Colors.blue,
+                minimumSize: const Size(200, 60),
+              ),
+              onPressed: () {
+                // todo move to next page
+                jumpToPage(currentPage + 1);
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    // todo show finish when in the last page
+                    currentPage == 2 ? 'Finish' : 'Next',
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
-                  ],
-                )),
+                  ),
+                  Icon(
+                    // todo show done icon when in the last page
+                    currentPage == 2 ? Icons.done : Icons.chevron_right,
+                    size: 30,
+                    color: Colors.white,
+                  ),
+                ],
+              ),
+            ),
           ),
           const SizedBox(
             height: 100,
