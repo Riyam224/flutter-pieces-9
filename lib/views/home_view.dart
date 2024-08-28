@@ -12,6 +12,14 @@ class _HomeViewState extends State<HomeView> {
   final pageController = PageController();
   var currentPage = 0;
 
+// todo move to next page func
+  void jumpToPage(int page) {
+    setState(() {
+      currentPage = page;
+      pageController.jumpToPage(page);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,6 +28,12 @@ class _HomeViewState extends State<HomeView> {
           Expanded(
             child: PageView(
               controller: pageController,
+              // todo to move back to previous page smoothly
+              onPageChanged: (val) {
+                setState(() {
+                  currentPage = val;
+                });
+              },
               children: const [
                 Page1(),
                 Page2(),
@@ -39,10 +53,8 @@ class _HomeViewState extends State<HomeView> {
                   minimumSize: const Size(200, 60),
                 ),
                 onPressed: () {
-                  setState(() {
-                    currentPage += 1;
-                  });
-                  pageController.jumpToPage(currentPage);
+                  // todo move to next page
+                  jumpToPage(currentPage + 1);
                 },
                 child: const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
