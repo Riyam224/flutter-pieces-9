@@ -13,10 +13,11 @@ class _HomeViewState extends State<HomeView> {
   var currentPage = 0;
 
 // todo move to next page func
-  void jumpToPage(int page) {
+  void jumpToPage(int nextPage) {
     setState(() {
-      currentPage = page;
-      pageController.jumpToPage(page);
+      currentPage = nextPage;
+      pageController.animateToPage(nextPage,
+          duration: const Duration(seconds: 1), curve: Curves.easeInOut);
     });
   }
 
